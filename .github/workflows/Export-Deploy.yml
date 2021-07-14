@@ -33,3 +33,18 @@ jobs:
             password-secret: ${{ secrets.POWERPLATFORM_SOURCEPASSWORD }}
             solution-name: DevOps1
             solution-output-file: ‘DevOps1.zip’
+            
+      - name: Import Solution
+        uses: microsoft/powerplatform-actions/import-solution@v0
+        with:
+            environment-url: 'https://orgd161aeeb.crm4.dynamics.com/'
+            user-name: 'admin@M365x639218.onmicrosoft.com'
+            password-secret: ${{ secrets.POWERPLATFORM_TARGETPASSWORD }}
+            ssolution-file: ‘DevOps1.zip’
+            
+      - name: Publish Solution
+        uses: microsoft/powerplatform-actions/publish-solution@main
+        with:
+            environment-url: 'https://orgd161aeeb.crm4.dynamics.com/'
+            user-name: 'admin@M365x639218.onmicrosoft.com'
+            password-secret: ${{ secrets.POWERPLATFORM_TARGETPASSWORD }}
