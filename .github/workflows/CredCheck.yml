@@ -1,0 +1,22 @@
+name: CredCheck
+
+on:
+  workflow_dispatch:
+
+jobs:
+  export-from-dev:
+    runs-on: windows-latest
+    env:
+      RUNNER_DEBUG: 1
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        lfs: true
+
+    - name: Who-am-i action
+      uses: microsoft/powerplatform-actions/who-am-i@v0
+      with:
+        environment-url: 'https://org8afc7726.crm.dynamics.com/'
+        user-name: 'admin@M365x639218.onmicrosoft.com'
+        password-secret: ${{ secrets.password }}
