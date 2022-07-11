@@ -1,0 +1,56 @@
+name: Create New environment
+
+on:
+  workflow_dispatch:
+      inputs:
+        name:
+          description: 'Name of the environment'
+          required: true
+        
+        description:
+          description: 'Environment Description (STACID)'
+          required: true
+          
+        region:
+          description: 'Local environments can provide quicker data access.'
+          required: true
+          default: United States, Europe, Asia, Japan, Canada, United Kingdom, South America, France, Switzerland, Germany, UAE
+
+        type:
+          description: 'Environment type'
+          required: true
+          default: Trial, Sandbox, Production, SubscriptionBasedTrial
+          
+        currency:
+          description: 'currency type'
+          required: true
+          default: USD, EUR
+          
+        language:
+          description: 'Language'
+          required: true
+          default: English
+
+jobs:
+  Create-New-Environment:
+    runs-on: windows-latest
+    env:
+      RUNNER_DEBUG: 1
+   
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        lfs: true
+        
+    - name: Creating Environment  
+      uses: microsoft/powerplatform-actions/create-environment@v0
+      with:
+        app-id: 41098e32-fccf-4145-b353-f40f2a917b16
+        client-secret: CEe5HsWm7Rcr2sCQ3puQ87aZty4kE5Iq
+        tenant-id: c1d0b961-f301-4256-b2ec-6e9efa04d80b
+        name: ${{ github.event.inputs.name }}
+        description: ${{ github.event.inputs.description }}
+        region: ${{ github.event.inputs.region }}
+        type: ${{ github.event.inputs.type }}
+        currency: ${{ github.event.inputs.currency }}
+        language: ${{ github.event.inputs.language }}
