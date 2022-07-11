@@ -20,3 +20,16 @@ jobs:
         environment-url: 'https://org8afc7726.crm.dynamics.com/'
         user-name: 'admin@M365x639218.onmicrosoft.com'
         password-secret: ${{ secrets.password }}
+        
+    - name: Creating Environment  
+      uses: microsoft/powerplatform-actions/create-environment@v0.7.1
+      with:
+        user-name: 'admin@M365x639218.onmicrosoft.com'
+        password-secret: ${{ secrets.password }}
+        tenant-id: c1d0b961-f301-4256-b2ec-6e9efa04d80b
+        name: ghosh
+        description: This is for testing
+        region: Europe
+        type: Production
+        currency: EUR
+        language: English
