@@ -18,8 +18,9 @@ jobs:
       uses: microsoft/powerplatform-actions/who-am-i@v0.7.1
       with:
         environment-url: 'https://org8afc7726.crm.dynamics.com/'
-        user-name: 'admin@M365x639218.onmicrosoft.com'
-        password-secret: ${{ secrets.password }}
+        app-id: 1024ef8d-d1ca-4923-8d57-4e9e415ff4b3
+        client-secret: UUL8Q~KAj_sNTFzbhTj23HZHRFVVH6Bo35iW9dfQ
+        tenant-id: c1d0b961-f301-4256-b2ec-6e9efa04d80
         
     - name: Creating Environment  
       uses: microsoft/powerplatform-actions/create-environment@v0.7.1
